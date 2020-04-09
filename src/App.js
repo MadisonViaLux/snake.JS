@@ -1,10 +1,12 @@
 import React from 'react';
-import SnakeBody from './SnakeBody'
+import SnakeBody from './SnakeBody';
+import Food from './Food';
 
 function App() {
 
 
-  state = {
+  const state = {
+    food: [6,8],
     body: [
       [0,0],
       [2,0]
@@ -14,7 +16,8 @@ function App() {
 
   return (
     <div className="game-area">
-      <SnakeBody snakeBod={this.state.body} />
+      <SnakeBody snakeBod={state.body} />
+      <Food dot={state.food}/>
     </div>
   );
 }
