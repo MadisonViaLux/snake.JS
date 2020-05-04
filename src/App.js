@@ -13,7 +13,15 @@ const getRandomCoord = () => {
   return [x,y]
 }
 
-
+const initState = {
+  food: getRandomCoord(),
+  speed: 200,
+  direction: 'RIGHT',
+  body: [
+    [0,0],
+    [2,0]
+  ]
+}
 
 class App extends Component{
 
@@ -27,12 +35,16 @@ class App extends Component{
     ]
   }
 
-
-
   componentDidMount(){
     setInterval(this.moveSnake, this.state.speed);
     document.onkeydown = this.onKeyDown;
   }
+
+
+  componentDidUpdate(){
+    this.outOfBounds()
+  }
+
 
   onKeyDown = (e) => {
     e = e || window.event;
@@ -73,13 +85,41 @@ class App extends Component{
     }
     dots.push(head);
     dots.shift();
-
     this.setState({
-      snakeDots: dots
+      body: dots
     })
-
-
   }
+
+
+  outOfBounds() {
+    let head = this.state.body[this.state.body.length -1];
+    if (head[0] >= 100 || head[1] >= 100 || head[0] < 0 || head[1] < 0){
+      this.onGameOver()
+    }
+  }
+
+
+  onGameOver(){
+    alert(`Game Over... Your score is, ${this.state.body.length - 2}`);
+    this.setState({
+      food: getRandomCoord(),
+      speed: 200,
+      direction: 'RIGHT',
+      body: [
+        [0,0],
+        [2,0]
+      ]
+    })
+  }
+
+
+
+
+
+
+
+
+
 
   render(){
     return (
