@@ -25,15 +25,7 @@ const initState = {
 
 class App extends Component{
 
-  state = {
-    food: getRandomCoord(),
-    speed: 200,
-    direction: 'RIGHT',
-    body: [
-      [0,0],
-      [2,0]
-    ]
-  }
+  state = initState
 
   componentDidMount(){
     setInterval(this.moveSnake, this.state.speed);
@@ -101,15 +93,7 @@ class App extends Component{
 
   onGameOver(){
     alert(`Game Over... Your score is, ${this.state.body.length - 2}`);
-    this.setState({
-      food: getRandomCoord(),
-      speed: 200,
-      direction: 'RIGHT',
-      body: [
-        [0,0],
-        [2,0]
-      ]
-    })
+    this.setState(initState)
   }
 
 
