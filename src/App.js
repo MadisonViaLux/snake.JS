@@ -24,13 +24,6 @@ const initState = {
 }
 
 
-// const oppoDirection = {
-//   'RIGHT': 'LEFT',
-//   'LEFT': 'RIGHT',
-//   'UP': 'DOWN',
-//   'DOWN': 'UP'
-// }
-
 class App extends Component{
 
   state = initState
@@ -180,7 +173,7 @@ class App extends Component{
 
 
   onGameOver(){
-    alert(`Game Over... Your score is, ${this.state.body.length - 2}`);
+    alert(`...Game Over... Your score is, ${this.state.body.length - 2}!!`);
     this.setState(initState)
   }
 
@@ -189,10 +182,13 @@ class App extends Component{
 
   render(){
     return (
-      <div>
+      <div className="mainPage">
         <div className="game-area">
           <SnakeBody snakeBod={this.state.body} />
           <Food dot={this.state.food}/>
+        </div>
+        <div>
+          hi
         </div>
       </div>
     );
