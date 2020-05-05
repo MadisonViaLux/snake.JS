@@ -8,6 +8,7 @@ base version tutorial found [here](https://www.youtube.com/watch?v=-oOgsGP3t5o)
 ## Tech Stack
 
 * JavaScript 
-* React
+* React Components
+* React Life Cycle
 
 
