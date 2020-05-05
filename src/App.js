@@ -23,6 +23,14 @@ const initState = {
   ]
 }
 
+
+// const oppoDirection = {
+//   'RIGHT': 'LEFT',
+//   'LEFT': 'RIGHT',
+//   'UP': 'DOWN',
+//   'DOWN': 'UP'
+// }
+
 class App extends Component{
 
   state = initState
@@ -42,19 +50,54 @@ class App extends Component{
 
   onKeyDown = (e) => {
     e = e || window.event;
-    switch (e.keyCode) {
-      case 38:
-        this.setState({direction: 'UP'});
-        break;
-      case 40:
-        this.setState({direction: 'DOWN'});
-        break;
-      case 37:
-        this.setState({direction: 'LEFT'});
-        break;
-      case 39:
-        this.setState({direction: 'RIGHT'});
-        break;
+    if(this.state.direction === 'RIGHT'){  
+      switch (e.keyCode) {
+        case 38:
+          this.setState({direction: 'UP'});
+          break;
+        case 40:
+          this.setState({direction: 'DOWN'});
+          break;
+        case 39:
+          this.setState({direction: 'RIGHT'});
+          break;
+      }
+    } else if(this.state.direction === 'LEFT'){
+      switch (e.keyCode) {
+        case 38:
+          this.setState({direction: 'UP'});
+          break;
+        case 40:
+          this.setState({direction: 'DOWN'});
+          break;
+        case 37:
+          this.setState({direction: 'LEFT'});
+          break;
+      }
+    }else if(this.state.direction === 'UP'){
+      switch (e.keyCode) {
+        case 38:
+          this.setState({direction: 'UP'});
+          break;
+        case 37:
+          this.setState({direction: 'LEFT'});
+          break;
+        case 39:
+          this.setState({direction: 'RIGHT'});
+          break;
+      }
+    }else if(this.state.direction === 'DOWN'){
+      switch (e.keyCode) {
+        case 40:
+          this.setState({direction: 'DOWN'});
+          break;
+        case 37:
+          this.setState({direction: 'LEFT'});
+          break;
+        case 39:
+          this.setState({direction: 'RIGHT'});
+          break;
+      }
     }
   }
 
