@@ -173,7 +173,7 @@ class App extends Component{
 
 
   onGameOver(){
-    alert(`...Game Over... Your score is, ${this.state.body.length - 2}!!`);
+    alert(`...Game Over... Your final score is, ${this.state.body.length - 2}!!`);
     this.setState(initState)
   }
 
@@ -187,8 +187,8 @@ class App extends Component{
           <SnakeBody snakeBod={this.state.body} />
           <Food dot={this.state.food}/>
         </div>
-        <div>
-          hi
+        <div className="scoreBoard">
+          <h1>Your Score: {this.state.body.length -2}! </h1>
         </div>
       </div>
     );
