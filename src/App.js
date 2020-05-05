@@ -15,7 +15,7 @@ const getRandomCoord = () => {
 
 const initState = {
   food: getRandomCoord(),
-  speed: 200,
+  speed: 150,
   direction: 'RIGHT',
   body: [
     [0,0],
@@ -126,6 +126,7 @@ class App extends Component{
     })
   }
 
+
   snakeSpeed(){
     if(this.state.speed > 10){
       this.setState({
@@ -145,9 +146,11 @@ class App extends Component{
 
   render(){
     return (
-      <div className="game-area">
-        <SnakeBody snakeBod={this.state.body} />
-        <Food dot={this.state.food}/>
+      <div>
+        <div className="game-area">
+          <SnakeBody snakeBod={this.state.body} />
+          <Food dot={this.state.food}/>
+        </div>
       </div>
     );
   }
