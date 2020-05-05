@@ -36,6 +36,16 @@
   z-index: 1;
 }
 
+.snake-food2{
+  position: absolute;
+  width: 2%;
+  height: 2%;
+  background-color: rgba(187, 0, 171, 0.842);
+  border: 1px solid rgb(253, 116, 116);
+  border-radius: 50%;
+  z-index: 1;
+}
+
 .scoreBoard{
   margin: 1rem auto;
   width: 290px;

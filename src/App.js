@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SnakeBody from './SnakeBody';
 import Food from './Food';
+import Food2 from './Food2'
 
 
 
@@ -15,7 +16,8 @@ const getRandomCoord = () => {
 
 const initState = {
   food: getRandomCoord(),
-  speed: 150,
+  food2: getRandomCoord(),
+  speed: 250,
   direction: 'RIGHT',
   body: [
     [0,0],
@@ -37,7 +39,8 @@ class App extends Component{
   componentDidUpdate(){
     this.outOfBounds();
     this.ifEatsSelf();
-    this.ifEatsFood()
+    this.ifEatsFood();
+    this.ifEatsFood2();
   }
 
 
@@ -154,6 +157,19 @@ class App extends Component{
   }
 
 
+  ifEatsFood2(){
+    let head = this.state.body[this.state.body.length -1];
+    let food = this.state.food2
+    if(head[0] === food[0] && head[1] === food[1]){
+      this.setState({
+        food2: getRandomCoord(),
+      })
+      this.snakeGrow();
+      this.snakeSpeed2();
+    }
+  }
+
+
   snakeGrow(){
     let newSnake = [...this.state.body];
     newSnake.unshift([])
@@ -164,9 +180,18 @@ class App extends Component{
 
 
   snakeSpeed(){
-    if(this.state.speed > 10){
+    if(this.state.speed >= 10){
       this.setState({
         speed: this.state.speed - 10
+      })
+    }
+  }
+
+
+  snakeSpeed2(){
+    if(this.state.speed > 10){
+      this.setState({
+        speed: this.state.speed - 50
       })
     }
   }
@@ -179,13 +204,13 @@ class App extends Component{
 
 
 
-
   render(){
     return (
       <div className="mainPage">
         <div className="game-area">
           <SnakeBody snakeBod={this.state.body} />
-          <Food dot={this.state.food}/>
+          <Food dot={this.state.food} />
+          <Food2 dot={this.state.food2} body={this.state.body} />
         </div>
         <div className="scoreBoard">
           <h1>Your Score: {this.state.body.length -2}! </h1>
