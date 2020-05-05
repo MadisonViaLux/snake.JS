@@ -36,6 +36,7 @@ class App extends Component{
   componentDidUpdate(){
     this.outOfBounds();
     this.ifEatsSelf();
+    this.ifEatsFood()
   }
 
 
@@ -97,10 +98,40 @@ class App extends Component{
     let head = snake[snake.length -1]
     snake.pop()
     snake.forEach(dot => {
-      if(head[0] == dot[0] && head[1] == dot[1]){
+      if(head[0] === dot[0] && head[1] === dot[1]){
         this.onGameOver()
       }
     })
+  }
+
+
+  ifEatsFood(){
+    let head = this.state.body[this.state.body.length -1];
+    let food = this.state.food
+    if(head[0] === food[0] && head[1] === food[1]){
+      this.setState({
+        food: getRandomCoord(),
+      })
+      this.snakeGrow();
+      this.snakeSpeed();
+    }
+  }
+
+
+  snakeGrow(){
+    let newSnake = [...this.state.body];
+    newSnake.unshift([])
+    this.setState({
+      body: newSnake
+    })
+  }
+
+  snakeSpeed(){
+    if(this.state.speed > 10){
+      this.setState({
+        speed: this.state.speed - 10
+      })
+    }
   }
 
 
