@@ -94,7 +94,7 @@ class App extends Component{
 
 
   ifEatsSelf(){
-    let snake = [this.state.body];
+    let snake = [...this.state.body];
     let head = snake[snake.length -1]
     snake.pop()
     snake.forEach(dot => {
@@ -139,12 +139,6 @@ class App extends Component{
     alert(`Game Over... Your score is, ${this.state.body.length - 2}`);
     this.setState(initState)
   }
-
-
-
-
-
-
 
 
 
