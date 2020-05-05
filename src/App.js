@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SnakeBody from './SnakeBody';
 import Food from './Food';
+import Food2 from './Food2'
 
 
 
@@ -15,13 +16,15 @@ const getRandomCoord = () => {
 
 const initState = {
   food: getRandomCoord(),
-  speed: 150,
+  food2: getRandomCoord(),
+  speed: 250,
   direction: 'RIGHT',
   body: [
     [0,0],
     [2,0]
   ]
 }
+
 
 class App extends Component{
 
@@ -36,25 +39,61 @@ class App extends Component{
   componentDidUpdate(){
     this.outOfBounds();
     this.ifEatsSelf();
-    this.ifEatsFood()
+    this.ifEatsFood();
+    this.ifEatsFood2();
   }
 
 
   onKeyDown = (e) => {
     e = e || window.event;
-    switch (e.keyCode) {
-      case 38:
-        this.setState({direction: 'UP'});
-        break;
-      case 40:
-        this.setState({direction: 'DOWN'});
-        break;
-      case 37:
-        this.setState({direction: 'LEFT'});
-        break;
-      case 39:
-        this.setState({direction: 'RIGHT'});
-        break;
+    if(this.state.direction === 'RIGHT'){  
+      switch (e.keyCode) {
+        case 38:
+          this.setState({direction: 'UP'});
+          break;
+        case 40:
+          this.setState({direction: 'DOWN'});
+          break;
+        case 39:
+          this.setState({direction: 'RIGHT'});
+          break;
+      }
+    } else if(this.state.direction === 'LEFT'){
+      switch (e.keyCode) {
+        case 38:
+          this.setState({direction: 'UP'});
+          break;
+        case 40:
+          this.setState({direction: 'DOWN'});
+          break;
+        case 37:
+          this.setState({direction: 'LEFT'});
+          break;
+      }
+    }else if(this.state.direction === 'UP'){
+      switch (e.keyCode) {
+        case 38:
+          this.setState({direction: 'UP'});
+          break;
+        case 37:
+          this.setState({direction: 'LEFT'});
+          break;
+        case 39:
+          this.setState({direction: 'RIGHT'});
+          break;
+      }
+    }else if(this.state.direction === 'DOWN'){
+      switch (e.keyCode) {
+        case 40:
+          this.setState({direction: 'DOWN'});
+          break;
+        case 37:
+          this.setState({direction: 'LEFT'});
+          break;
+        case 39:
+          this.setState({direction: 'RIGHT'});
+          break;
+      }
     }
   }
 
@@ -118,6 +157,19 @@ class App extends Component{
   }
 
 
+  ifEatsFood2(){
+    let head = this.state.body[this.state.body.length -1];
+    let food = this.state.food2
+    if(head[0] === food[0] && head[1] === food[1]){
+      this.setState({
+        food2: getRandomCoord(),
+      })
+      this.snakeGrow();
+      this.snakeSpeed2();
+    }
+  }
+
+
   snakeGrow(){
     let newSnake = [...this.state.body];
     newSnake.unshift([])
@@ -128,7 +180,7 @@ class App extends Component{
 
 
   snakeSpeed(){
-    if(this.state.speed > 10){
+    if(this.state.speed >= 10){
       this.setState({
         speed: this.state.speed - 10
       })
@@ -136,20 +188,32 @@ class App extends Component{
   }
 
 
+  snakeSpeed2(){
+    if(this.state.speed > 10){
+      this.setState({
+        speed: this.state.speed - 50
+      })
+    }
+  }
+
+
   onGameOver(){
-    alert(`Game Over... Your score is, ${this.state.body.length - 2}`);
+    alert(`...Game Over... Your final score is, ${this.state.body.length - 2}!!`);
     this.setState(initState)
   }
 
 
 
-
   render(){
     return (
-      <div>
+      <div className="mainPage">
         <div className="game-area">
           <SnakeBody snakeBod={this.state.body} />
-          <Food dot={this.state.food}/>
+          <Food dot={this.state.food} />
+          <Food2 dot={this.state.food2} body={this.state.body} />
+        </div>
+        <div className="scoreBoard">
+          <h1>Your Score: {this.state.body.length -2}! </h1>
         </div>
       </div>
     );
