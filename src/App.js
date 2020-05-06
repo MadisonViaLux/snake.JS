@@ -18,7 +18,7 @@ const getRandomCoord = () => {
 const initState = {
   food: getRandomCoord(),
   superFood: getRandomCoord(),
-  speed: 250,
+  speed: 150,
   direction: 'RIGHT',
   body: [
     [0,0],
