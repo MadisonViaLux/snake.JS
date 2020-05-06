@@ -7,8 +7,6 @@ export default (props) => {
         top: `${props.dot[1]}%`
     }
 
-    // console.log(props.body.length)
-
     if(props.body.length-2 >= 10){
         return(
             <div className="snake-superFood" style={style}></div>
