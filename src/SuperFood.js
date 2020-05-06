@@ -11,7 +11,7 @@ export default (props) => {
 
     if(props.body.length-2 >= 10){
         return(
-            <div className="snake-food2" style={style}></div>
+            <div className="snake-superFood" style={style}></div>
         )
     } else {
         return(
