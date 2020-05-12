@@ -9,6 +9,6 @@ base version tutorial found [here](https://www.youtube.com/watch?v=-oOgsGP3t5o)
 
 * JavaScript 
 * React Components
-* React Life Cycle
+* React Life Cycle Methods
 
 

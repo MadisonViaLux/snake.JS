@@ -160,7 +160,7 @@ class App extends Component{
         food: getRandomCoord(),
       })
       this.snakeGrow();
-      this.snakeSpeed();
+      // this.snakeSpeed();
     }
   }
 
@@ -174,7 +174,7 @@ class App extends Component{
         superFood: getRandomCoord(),
       })
       this.snakeGrow();
-      this.snakeSuperSpeed();
+      // this.snakeSuperSpeed();
     }
   }
 
