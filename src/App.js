@@ -33,7 +33,7 @@ class App extends Component{
   state = initState
 
 
-  // React Life Cycle Methods
+  // React Life Cycle Methods Update/Mount
   componentDidMount(){
     setInterval(this.moveSnake, this.state.speed);
     document.onkeydown = this.onKeyDown;
