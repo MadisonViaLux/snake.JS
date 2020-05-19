@@ -227,7 +227,7 @@ class App extends Component{
           <SuperFood dot={this.state.superFood} body={this.state.body} />
         </div>
         <div className="scoreBoard">
-          <h1>Your Score: {this.state.body.length -2}! </h1>
+          <h1>Your Score: ***{this.state.body.length -2}***! </h1>
         </div>
       </div>
     );
