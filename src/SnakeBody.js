@@ -1,6 +1,8 @@
 import React from 'react'
 
 export default (props) => {
+
+    // Div used as the body
     return(
         <div>
             {props.snakeBod.map((body, i) => {
